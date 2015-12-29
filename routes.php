@@ -1,5 +1,6 @@
 <?php
-
+$r->group(['middleware' => ['web']], function ($r) use($controllers) {
+    
 $r->group(['prefix' => 'api', 'namespace' => 'API', 'as' => 'api.', 'middleware' => 'forum.api.auth'], function ($r)
 {
     // Categories
@@ -70,4 +71,6 @@ $r->group(['prefix' => 'api', 'namespace' => 'API', 'as' => 'api.', 'middleware'
             $r->patch('restore', ['as' => 'restore', 'uses' => 'PostController@bulkRestore']);
         });
     });
+});
+
 });
